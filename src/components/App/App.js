@@ -14,7 +14,6 @@ function App() {
   const [prayer, setPrayer] = useState("");
   const [theme, setTheme] = useState("");
   const [day, setWeekDay] = useState("");
-  
 
   window.addEventListener("load", (event) => {
     getPrayers("today");
@@ -31,10 +30,35 @@ function App() {
     .catch(err => console.error(err));
 }
 
-// /v1/day
-  // useEffect(() => {
-  //   getPrayers();
-  // }, "");
+  const dayPrayers = async () => {
+    try {
+      const data = await getPrayers(day);
+      setWeekDay(data);
+    } catch (error) {
+      console.error('ERROR:', error);
+    }
+  }
+  // const dayPrayers = async () => {
+  //   try {
+  //     const data = await getPrayers(day);
+  //     setWeekDay(data);
+  //   } catch (error) {
+  //     console.error('ERROR:', error);
+  //   }
+  //  }
+   
+  
+// const [questions, setQuestions] = useState<Question[]>([]);
+//   const [selectedDifficulty, setSelectedDifficulty] = useState('easy');
+//   const [score, setScore] = useState<number>(0);
+
+//   const fetchData = async () => {
+//     try {
+//       const data = await getQuestions(selectedDifficulty);
+//       setQuestions(data);
+//     } catch (error) {
+//       console.error('ERROR:', error);
+//     }
 
   return (
     <main className="App">
@@ -73,7 +97,7 @@ function App() {
 
 export default App;
 
-{/* <img src={logo} className="App-logo" alt="logo" />
+/* <img src={logo} className="App-logo" alt="logo" />
 <p>
   Edit <code>src/App.js</code> and save to reload.
 </p>
@@ -84,4 +108,9 @@ export default App;
   rel="noopener noreferrer"
 >
   Learn React
-</a> */}
+</a> */
+
+// /v1/day
+  // useEffect(() => {
+  //   getPrayers();
+  // }, "");
