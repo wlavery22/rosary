@@ -11,3 +11,5 @@ function PrayerPage() {
     </main>
   )
 }
+
+export default PrayerPage
