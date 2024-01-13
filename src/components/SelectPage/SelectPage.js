@@ -13,9 +13,9 @@ function SelectPage({ setTheme, setWeekDay }) {
       <div className="choose-theme-menu">
         <ThemeMenu className="select-theme" setTheme={setTheme} />
         <WeekDayMenu className="select-day" setWeekDay={setWeekDay} />
-        <Link className="to-prayer-page" to="/prayer">
+        {/* <Link className="to-prayer-page" to="/prayer">
           <button className="theme-btn">Submit Theme</button>
-        </Link>
+        </Link> */}
       </div>
     </main>
   )

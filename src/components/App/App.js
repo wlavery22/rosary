@@ -1,21 +1,24 @@
-import logo from '../../logo.svg';
-import './App.css';
+// import logo from '../../logo.svg';
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import ErrorPage from '../ErrorPage/ErrorPage';
 import HomePage from '../HomePage/HomePage';
 import PrayerPage from '../PrayerPage/PrayerPage';
 import SelectPage from '../SelectPage/SelectPage';
-import { getPrayers } from '../../apiCalls'
+import ThemeMenu from '../ThemeMenu/ThemeMenu.js';
+import WeekDayMenu from '../WeekDayMenu/WeekDayMenu.js';
 import PrayerCard from '../PrayerCard/PrayerCard';
+// import { getPrayers } from '../../apiCall';
 
 function App() {
   const [prayer, setPrayer] = useState("");
-  const [day, setWeekDay] = useState("");
   const [theme, setTheme] = useState("");
+  const [day, setWeekDay] = useState("");
+  
 
   window.addEventListener("load", (event) => {
     getPrayers("today");
+    setPrayer(data[0].mp3Link);
   });
 
   const getPrayers = (selection) => {
@@ -39,7 +42,12 @@ function App() {
         <Route path="/" element={<HomePage prayer={prayer} />} />
         <Route
           path="/select"
-          element={<SelectPage />}
+          element={
+            <SelectPage 
+              setTheme={setTheme} 
+              setWeekDay={setWeekDay}
+            />
+          }
         />
         {/* <Route
           path="/prayercard"

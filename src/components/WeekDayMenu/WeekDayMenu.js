@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import "./WeekDayMenu.css"
+import { Link } from 'react-router-dom';
 
 const WeekDayMenu = ({ setWeekDay }) => {
 
@@ -20,6 +21,9 @@ const WeekDayMenu = ({ setWeekDay }) => {
           <option value="saturday">Saturday</option>
           <option value="sunday">Sunday</option>
         </select>
+        <Link className="to-prayer-page" to="/prayer">
+          <button className="theme-btn">Submit Day</button>
+        </Link>
       </div>
     </main>
   );

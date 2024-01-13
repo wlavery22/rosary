@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import "./ThemeMenu.css"
+import { Link } from 'react-router-dom';
 
 const ThemeMenu = ({ setTheme }) => {
 
@@ -17,6 +18,9 @@ const ThemeMenu = ({ setTheme }) => {
           <option value="sorrowful">Sorrowful</option>
           <option value="luminous">Luminous</option>
         </select>
+        <Link className="to-prayer-page" to="/prayer">
+          <button className="theme-btn">Submit Theme</button>
+        </Link>
       </div>
     </main>
   );
