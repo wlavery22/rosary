@@ -10,7 +10,7 @@ import { getPrayers } from '../../apiCalls'
 import PrayerCard from '../PrayerCard/PrayerCard';
 
 function App() {
-  const [prayer, setPrayer] = useState("");
+  const [prayer, setPrayer] = useState("initialState");
   const [date, setDate] = useState("");
   const [topic, setTopic] = useState("");
 
@@ -19,10 +19,11 @@ function App() {
   });
 
   const getPrayers = () => {
-    fetch("https://the-rosary-api.vercel.app/v1/today")
+    fetch("https://the-rosary-api.vercel.app/v1/joyful")
     .then(response => response.json())
     .then(data => {
-      setPrayer(data);
+      console.log(data)
+      setPrayer(data[0].text);
     })
     .catch(err => console.error(err));
 }
@@ -35,20 +36,19 @@ function App() {
   return (
     <main className="App">
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage prayer={prayer} />} />
         {/* <Route
           path="/select"
           element={<SelectPage />}
         /> */}
-        <Route
+        {/* <Route
           path="/prayercard"
           element={
             <PrayerCard 
-              setPrayer={setPrayer}
               prayer={prayer} 
             />
           }
-        />
+        /> */}
         {/* <Route
           path="/prayer"
           element={

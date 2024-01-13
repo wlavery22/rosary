@@ -1,7 +1,7 @@
 import './PrayerCard.css';
 import { useState, useEffect } from 'react';
 
-function PrayerCard({prayer, setPrayer}) {
+function PrayerCard({prayer}) {
 
   return (
     <main className="prayer-card">
