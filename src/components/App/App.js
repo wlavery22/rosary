@@ -10,20 +10,20 @@ import { getPrayers } from '../../apiCalls'
 import PrayerCard from '../PrayerCard/PrayerCard';
 
 function App() {
-  const [prayer, setPrayer] = useState("initialState");
+  const [prayer, setPrayer] = useState("");
   const [date, setDate] = useState("");
-  const [topic, setTopic] = useState("");
+  const [theme, setTheme] = useState("");
 
   window.addEventListener("load", (event) => {
-    getPrayers();
+    getPrayers("today");
   });
 
-  const getPrayers = () => {
-    fetch("https://the-rosary-api.vercel.app/v1/joyful")
+  const getPrayers = (selection) => {
+    fetch(`https://the-rosary-api.vercel.app/v1/${selection}`)
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      setPrayer(data[0].text);
+      setPrayer(data[0].mp3Link);
     })
     .catch(err => console.error(err));
 }
@@ -37,10 +37,10 @@ function App() {
     <main className="App">
       <Routes>
         <Route path="/" element={<HomePage prayer={prayer} />} />
-        {/* <Route
+        <Route
           path="/select"
           element={<SelectPage />}
-        /> */}
+        />
         {/* <Route
           path="/prayercard"
           element={
@@ -49,14 +49,14 @@ function App() {
             />
           }
         /> */}
-        {/* <Route
+        <Route
           path="/prayer"
           element={
             <PrayerPage
               // questions={questions}
             />
           }
-        /> */}
+        />
         {/* <Route path="/*" element={<ErrorPage />} /> */}
       </Routes>
     </main>
