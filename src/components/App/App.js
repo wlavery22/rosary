@@ -11,7 +11,7 @@ import PrayerCard from '../PrayerCard/PrayerCard';
 
 function App() {
   const [prayer, setPrayer] = useState("");
-  const [date, setDate] = useState("");
+  const [day, setWeekDay] = useState("");
   const [theme, setTheme] = useState("");
 
   window.addEventListener("load", (event) => {
