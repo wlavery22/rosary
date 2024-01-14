@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import "./WeekDayMenu.css"
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const WeekDayMenu = ({ setWeekDay }) => {
-
+const WeekDayMenu = ({ setWeekDay, setTheme }) => {
+  const navigate = useNavigate();
+  
   const handleDaySelection = (event) => {
     setWeekDay(event.target.value);
+    setTheme("");
+    navigate("/prayer");
   };
 
   return (
@@ -13,6 +17,7 @@ const WeekDayMenu = ({ setWeekDay }) => {
       <div class="input-field">
         <label className="day-label" htmlFor="week-day-dropdown">Select Day</label>
         <select id="day-dropdown" onChange={handleDaySelection}>
+          <option value="">Make Selection</option>
           <option value="monday">Monday</option>
           <option value="tuesday">Tuesday</option>
           <option value="wednesday">Wednesday</option>
@@ -21,9 +26,6 @@ const WeekDayMenu = ({ setWeekDay }) => {
           <option value="saturday">Saturday</option>
           <option value="sunday">Sunday</option>
         </select>
-        <Link className="to-prayer-page" to="/prayer">
-          <button className="theme-btn">Submit Day</button>
-        </Link>
       </div>
     </main>
   );

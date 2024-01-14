@@ -15,51 +15,33 @@ function App() {
   const [theme, setTheme] = useState("");
   const [day, setWeekDay] = useState("");
 
-  window.addEventListener("load", (event) => {
-    getPrayers("today");
-    setPrayer(data[0].mp3Link);
-  });
+  useEffect(() => {
+    if (theme) {
+      getPrayers(theme);
+    } else if (day) {
+      getPrayers(day)
+    } else {
+      getPrayers("today");
+    }
+    // setPrayer(data[0].mp3Link);
+  }, []);
+
+  // if (isPacked) {
+  //   return <li className="item">{name} ✔</li>;
+  // }
+  // return <li className="item">{name}</li>;
 
   const getPrayers = (selection) => {
     fetch(`https://the-rosary-api.vercel.app/v1/${selection}`)
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      setPrayer(data[0].mp3Link);
+      setPrayer(data[0]);
     })
     .catch(err => console.error(err));
-}
-
-  const dayPrayers = async () => {
-    try {
-      const data = await getPrayers(day);
-      setWeekDay(data);
-    } catch (error) {
-      console.error('ERROR:', error);
-    }
   }
-  // const dayPrayers = async () => {
-  //   try {
-  //     const data = await getPrayers(day);
-  //     setWeekDay(data);
-  //   } catch (error) {
-  //     console.error('ERROR:', error);
-  //   }
-  //  }
-   
-  
-// const [questions, setQuestions] = useState<Question[]>([]);
-//   const [selectedDifficulty, setSelectedDifficulty] = useState('easy');
-//   const [score, setScore] = useState<number>(0);
 
-//   const fetchData = async () => {
-//     try {
-//       const data = await getQuestions(selectedDifficulty);
-//       setQuestions(data);
-//     } catch (error) {
-//       console.error('ERROR:', error);
-//     }
-
+  console.log(theme, day, prayer)
   return (
     <main className="App">
       <Routes>
@@ -97,6 +79,25 @@ function App() {
 
 export default App;
 
+  // const dayPrayers = async () => {
+  //   try {
+  //     const dayData = await getDayPrayers(day);
+  //     setWeekDay(dayData);
+  //   } catch (error) {
+  //     console.error('ERROR:', error);
+  //   }
+  // }
+
+  // const getDayPrayers = (day) => {
+  //   fetch(`https://the-rosary-api.vercel.app/v1/${day}`)
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     console.log(data)
+  //     setPrayer(data[0].text);
+  //   })
+  //   .catch(err => console.error(err));
+  // }
+
 /* <img src={logo} className="App-logo" alt="logo" />
 <p>
   Edit <code>src/App.js</code> and save to reload.
@@ -109,8 +110,3 @@ export default App;
 >
   Learn React
 </a> */
-
-// /v1/day
-  // useEffect(() => {
-  //   getPrayers();
-  // }, "");
