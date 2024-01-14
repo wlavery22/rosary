@@ -3,12 +3,12 @@ import "./ThemeMenu.css"
 // import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-const ThemeMenu = ({ setTheme, setWeekDay }) => {
+const ThemeMenu = ({ setTheme, setDate }) => {
   const navigate = useNavigate();
 
   const handleThemeSelection = (event) => {
     setTheme(event.target.value);
-    setWeekDay("");
+    setDate("");
     navigate("/prayer");
   };
 

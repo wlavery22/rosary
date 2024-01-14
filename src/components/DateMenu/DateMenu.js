@@ -1,22 +1,22 @@
 import { useState } from 'react';
-import "./WeekDayMenu.css"
+import "./DateMenu.css"
 // import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-const WeekDayMenu = ({ setWeekDay, setTheme }) => {
+const DateMenu = ({ setDate, setTheme }) => {
   const navigate = useNavigate();
-  
-  const handleDaySelection = (event) => {
-    setWeekDay(event.target.value);
+
+  const handleDateSelection = (event) => {
+    setDate(event.target.value);
     setTheme("");
     navigate("/prayer");
   };
 
   return (
-    <main className ="week-day-menu">
-      <div class="input-field">
+    <main className ="date-menu">
+      {/* <div class="input-field">
         <label className="day-label" htmlFor="week-day-dropdown">Select Day</label>
-        <select id="day-dropdown" onChange={handleDaySelection}>
+        <select id="day-dropdown" onChange={handleDateSelection}>
           <option value="">Make Selection</option>
           <option value="monday">Monday</option>
           <option value="tuesday">Tuesday</option>
@@ -26,9 +26,17 @@ const WeekDayMenu = ({ setWeekDay, setTheme }) => {
           <option value="saturday">Saturday</option>
           <option value="sunday">Sunday</option>
         </select>
-      </div>
+      </div> */}
+      <form>
+        <label for="date">Date:</label> 
+        <select id="date-select"></select>
+          <input type="date" name="date" id="date" required onChange={handleDateSelection}/>
+        {/* <br></br>
+        <button type="button" id="date-submit-button" class="date-submit-button">Submit</button>*/}
+      </form>
     </main>
   );
 };
 
-export default WeekDayMenu;
+export default DateMenu;
+

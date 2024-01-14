@@ -6,22 +6,22 @@ import HomePage from '../HomePage/HomePage';
 import PrayerPage from '../PrayerPage/PrayerPage';
 import SelectPage from '../SelectPage/SelectPage';
 import ThemeMenu from '../ThemeMenu/ThemeMenu.js';
-import WeekDayMenu from '../WeekDayMenu/WeekDayMenu.js';
+import WeekDayMenu from '../DateMenu/DateMenu.js';
 import PrayerCard from '../PrayerCard/PrayerCard';
 // import { getPrayers } from '../../apiCall';
 
 function App() {
-  const [prayer, setPrayer] = useState("");
+  const [dailyPrayer, setDailyPrayer] = useState("");
   const [theme, setTheme] = useState("");
-  const [day, setWeekDay] = useState("");
+  const [date, setDate] = useState("");
 
   useEffect(() => {
     if (theme) {
-      getPrayers(theme);
-    } else if (day) {
-      getPrayers(day)
+      getThemePrayers(theme);
+    } else if (date) {
+      getDatePrayers(date)
     } else {
-      getPrayers("today");
+      getDailyPrayers("today");
     }
     // setPrayer(data[0].mp3Link);
   }, []);
@@ -31,38 +31,50 @@ function App() {
   // }
   // return <li className="item">{name}</li>;
 
-  const getPrayers = (selection) => {
+  const getThemePrayers = (selection) => {
     fetch(`https://the-rosary-api.vercel.app/v1/${selection}`)
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      setPrayer(data[0]);
+      setTheme(data[0].text);
     })
     .catch(err => console.error(err));
   }
 
-  console.log(theme, day, prayer)
+  const getDatePrayers = (selection) => {
+    fetch(`https://the-rosary-api.vercel.app/v1/${selection}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      setDate(data[0].mp3Link);
+    })
+    .catch(err => console.error(err));
+  }
+
+  const getDailyPrayers = (selection) => {
+    fetch(`https://the-rosary-api.vercel.app/v1/${selection}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      setDailyPrayer(data[0].mp3Link);
+    })
+    .catch(err => console.error(err));
+  }
+
+  console.log(theme, date, dailyPrayer)
   return (
     <main className="App">
       <Routes>
-        <Route path="/" element={<HomePage prayer={prayer} />} />
+        <Route path="/" element={<HomePage dailyPrayer={dailyPrayer} />} />
         <Route
           path="/select"
           element={
             <SelectPage 
               setTheme={setTheme} 
-              setWeekDay={setWeekDay}
+              setDate={setDate}
             />
           }
         />
-        {/* <Route
-          path="/prayercard"
-          element={
-            <PrayerCard 
-              prayer={prayer} 
-            />
-          }
-        /> */}
         <Route
           path="/prayer"
           element={
@@ -72,6 +84,14 @@ function App() {
           }
         />
         {/* <Route path="/*" element={<ErrorPage />} /> */}
+                {/* <Route
+          path="/prayercard"
+          element={
+            <PrayerCard 
+              prayer={prayer} 
+            />
+          }
+        /> */}
       </Routes>
     </main>
   );
