@@ -17,11 +17,11 @@ function App() {
 
   useEffect(() => {
     if (theme) {
-      getThemePrayers(theme);
+      getThemePrayer(theme);
     } else if (date) {
-      getDatePrayers(date)
+      getDatePrayer(date)
     } else {
-      getDailyPrayers("today");
+      getDailyPrayer("today");
     }
     // setPrayer(data[0].mp3Link);
   }, []);
@@ -31,7 +31,7 @@ function App() {
   // }
   // return <li className="item">{name}</li>;
 
-  const getThemePrayers = (selection) => {
+  const getThemePrayer = (selection) => {
     fetch(`https://the-rosary-api.vercel.app/v1/${selection}`)
     .then(response => response.json())
     .then(data => {
@@ -41,7 +41,7 @@ function App() {
     .catch(err => console.error(err));
   }
 
-  const getDatePrayers = (selection) => {
+  const getDatePrayer = (selection) => {
     fetch(`https://the-rosary-api.vercel.app/v1/${selection}`)
     .then(response => response.json())
     .then(data => {
@@ -51,7 +51,7 @@ function App() {
     .catch(err => console.error(err));
   }
 
-  const getDailyPrayers = (selection) => {
+  const getDailyPrayer = (selection) => {
     fetch(`https://the-rosary-api.vercel.app/v1/${selection}`)
     .then(response => response.json())
     .then(data => {

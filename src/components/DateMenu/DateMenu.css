@@ -1,8 +1,12 @@
 
 
-.day-label {
+.date-label {
   font-size: 2.5em;
   padding-right: 20px;
+}
+
+#date {
+  font-size: 2.5em;
 }
 
 select {
