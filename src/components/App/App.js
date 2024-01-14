@@ -1,47 +1,90 @@
-import logo from '../../logo.svg';
-import './App.css';
+// import logo from '../../logo.svg';
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import ErrorPage from '../ErrorPage/ErrorPage';
 import HomePage from '../HomePage/HomePage';
 import PrayerPage from '../PrayerPage/PrayerPage';
 import SelectPage from '../SelectPage/SelectPage';
-import { getPrayers } from '../../apiCalls'
+import ThemeMenu from '../ThemeMenu/ThemeMenu.js';
+import WeekDayMenu from '../DateMenu/DateMenu.js';
 import PrayerCard from '../PrayerCard/PrayerCard';
+// import { getPrayers } from '../../apiCall';
 
 function App() {
-  const [prayer, setPrayer] = useState("initialState");
+  const [dailyPrayer, setDailyPrayer] = useState("");
+  const [theme, setTheme] = useState("");
   const [date, setDate] = useState("");
-  const [topic, setTopic] = useState("");
 
-  window.addEventListener("load", (event) => {
-    getPrayers();
-  });
+  useEffect(() => {
+    if (theme) {
+      getThemePrayers(theme);
+    } else if (date) {
+      getDatePrayers(date)
+    } else {
+      getDailyPrayers("today");
+    }
+    // setPrayer(data[0].mp3Link);
+  }, []);
 
-  const getPrayers = () => {
-    fetch("https://the-rosary-api.vercel.app/v1/joyful")
+  // if (isPacked) {
+  //   return <li className="item">{name} ✔</li>;
+  // }
+  // return <li className="item">{name}</li>;
+
+  const getThemePrayers = (selection) => {
+    fetch(`https://the-rosary-api.vercel.app/v1/${selection}`)
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      setPrayer(data[0].text);
+      setTheme(data[0].text);
     })
     .catch(err => console.error(err));
-}
+  }
 
-// /v1/day
-  // useEffect(() => {
-  //   getPrayers();
-  // }, "");
+  const getDatePrayers = (selection) => {
+    fetch(`https://the-rosary-api.vercel.app/v1/${selection}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      setDate(data[0].mp3Link);
+    })
+    .catch(err => console.error(err));
+  }
 
+  const getDailyPrayers = (selection) => {
+    fetch(`https://the-rosary-api.vercel.app/v1/${selection}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      setDailyPrayer(data[0].mp3Link);
+    })
+    .catch(err => console.error(err));
+  }
+
+  console.log(theme, date, dailyPrayer)
   return (
     <main className="App">
       <Routes>
-        <Route path="/" element={<HomePage prayer={prayer} />} />
-        {/* <Route
+        <Route path="/" element={<HomePage dailyPrayer={dailyPrayer} />} />
+        <Route
           path="/select"
-          element={<SelectPage />}
-        /> */}
-        {/* <Route
+          element={
+            <SelectPage 
+              setTheme={setTheme} 
+              setDate={setDate}
+            />
+          }
+        />
+        <Route
+          path="/prayer"
+          element={
+            <PrayerPage
+              // questions={questions}
+            />
+          }
+        />
+        {/* <Route path="/*" element={<ErrorPage />} /> */}
+                {/* <Route
           path="/prayercard"
           element={
             <PrayerCard 
@@ -49,15 +92,6 @@ function App() {
             />
           }
         /> */}
-        {/* <Route
-          path="/prayer"
-          element={
-            <PrayerPage
-              // questions={questions}
-            />
-          }
-        /> */}
-        {/* <Route path="/*" element={<ErrorPage />} /> */}
       </Routes>
     </main>
   );
@@ -65,7 +99,26 @@ function App() {
 
 export default App;
 
-{/* <img src={logo} className="App-logo" alt="logo" />
+  // const dayPrayers = async () => {
+  //   try {
+  //     const dayData = await getDayPrayers(day);
+  //     setWeekDay(dayData);
+  //   } catch (error) {
+  //     console.error('ERROR:', error);
+  //   }
+  // }
+
+  // const getDayPrayers = (day) => {
+  //   fetch(`https://the-rosary-api.vercel.app/v1/${day}`)
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     console.log(data)
+  //     setPrayer(data[0].text);
+  //   })
+  //   .catch(err => console.error(err));
+  // }
+
+/* <img src={logo} className="App-logo" alt="logo" />
 <p>
   Edit <code>src/App.js</code> and save to reload.
 </p>
@@ -76,4 +129,4 @@ export default App;
   rel="noopener noreferrer"
 >
   Learn React
-</a> */}
+</a> */

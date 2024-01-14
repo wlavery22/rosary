@@ -1,5 +1,24 @@
 
 
+// export const getPrayers = (selection) => {
+//   fetch(`https://the-rosary-api.vercel.app/v1/${selection}`)
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log(data)
+//     // setPrayer(data[0].mp3Link);
+//   })
+//   .catch(err => console.error(err));
+// }
+
+
+
+
+
+
+
+
+
+
 // export const getPrayers = () => {
 // fetch("https://the-rosary-api.vercel.app/v1/today")
 //   .then(response => response.json())
