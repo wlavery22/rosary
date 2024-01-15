@@ -6,25 +6,33 @@ import HomePage from '../HomePage/HomePage';
 import PrayerPage from '../PrayerPage/PrayerPage';
 import SelectPage from '../SelectPage/SelectPage';
 import ThemeMenu from '../ThemeMenu/ThemeMenu.js';
-import WeekDayMenu from '../DateMenu/DateMenu.js';
+import DateMenu from '../DateMenu/DateMenu.js';
 import PrayerCard from '../PrayerCard/PrayerCard';
+import { formatDate, getRandomElement } from '../../utils.js'
+
 // import { getPrayers } from '../../apiCall';
 
 function App() {
   const [dailyPrayer, setDailyPrayer] = useState("");
   const [theme, setTheme] = useState("");
   const [date, setDate] = useState("");
+  const [prayer, setPrayer] = useState("");
 
   useEffect(() => {
     if (theme) {
       getThemePrayer(theme);
     } else if (date) {
-      getDatePrayer(date)
+      console.log("DATE!!!:", date)
+      getDatePrayer(`date/${formatDate(date)}`)
     } else {
-      getDailyPrayer("today");
+      getPrayer("today");
     }
     // setPrayer(data[0].mp3Link);
-  }, []);
+  }, [theme, date]);
+
+  useEffect(() => {
+    getDailyPrayer("today");
+  }, []) 
 
   // if (isPacked) {
   //   return <li className="item">{name} ✔</li>;
@@ -32,21 +40,33 @@ function App() {
   // return <li className="item">{name}</li>;
 
   const getThemePrayer = (selection) => {
+    console.log("HEY", selection)
     fetch(`https://the-rosary-api.vercel.app/v1/${selection}`)
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      setTheme(data[0].text);
+      setPrayer(getRandomElement(data).text);
     })
     .catch(err => console.error(err));
   }
 
   const getDatePrayer = (selection) => {
+    console.log("HEY", selection)
     fetch(`https://the-rosary-api.vercel.app/v1/${selection}`)
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      setDate(data[0].mp3Link);
+      setPrayer(data.mp3Link);
+    })
+    .catch(err => console.error(err));
+  }
+
+  const getPrayer = (selection) => {
+    fetch(`https://the-rosary-api.vercel.app/v1/${selection}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      setPrayer(data[0].mp3Link);
     })
     .catch(err => console.error(err));
   }
@@ -61,7 +81,8 @@ function App() {
     .catch(err => console.error(err));
   }
 
-  console.log(theme, date, dailyPrayer)
+  console.log(theme, date)
+
   return (
     <main className="App">
       <Routes>
@@ -72,14 +93,15 @@ function App() {
             <SelectPage 
               setTheme={setTheme} 
               setDate={setDate}
+              setPrayer={setPrayer}
             />
           }
         />
         <Route
           path="/prayer"
           element={
-            <PrayerPage
-              // questions={questions}
+            <PrayerPage 
+              prayer={prayer} 
             />
           }
         />

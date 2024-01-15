@@ -8,7 +8,7 @@ function HomePage({dailyPrayer}) {
 return (
   <main className="home-page">
     <h1 className="title">Welcome to Daily Prayer App</h1>
-    <PrayerCard dailyPrayer={dailyPrayer} />
+    <PrayerCard prayer={dailyPrayer} />
     <Link to="/select">
       <button className="select-prayer">Select Prayer</button>
     </Link>

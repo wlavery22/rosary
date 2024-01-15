@@ -3,13 +3,14 @@ import "./DateMenu.css"
 // import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-const DateMenu = ({ setDate, setTheme }) => {
+const DateMenu = ({ setDate, setTheme, setPrayer }) => {
   const navigate = useNavigate();
 
   const handleDateSelection = (event) => {
     setDate(event.target.value);
     setTheme("");
     navigate("/prayer");
+    // console.log("DATE:", date)
   };
 
   return (
