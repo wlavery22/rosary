@@ -56,7 +56,9 @@ function App() {
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      setPrayer(data.mp3Link);
+      setPrayer(`https://dailyrosary.cf/${data.mp3Link}`);
+      // setPrayer(`${https://dailyrosary.cf/}${data[0].mp3Link}`);
+
     })
     .catch(err => console.error(err));
   }
@@ -66,7 +68,8 @@ function App() {
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      setPrayer(data[0].mp3Link);
+      // setPrayer(data[0].mp3Link);
+      setPrayer(`https://dailyrosary.cf/${data[0].mp3Link}`);
     })
     .catch(err => console.error(err));
   }
@@ -76,7 +79,7 @@ function App() {
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      setDailyPrayer(data[0].mp3Link);
+      setDailyPrayer(`https://dailyrosary.cf/${data[0].mp3Link}`);
     })
     .catch(err => console.error(err));
   }
