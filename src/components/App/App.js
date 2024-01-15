@@ -1,4 +1,3 @@
-// import logo from '../../logo.svg';
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import ErrorPage from '../ErrorPage/ErrorPage';
@@ -9,8 +8,6 @@ import ThemeMenu from '../ThemeMenu/ThemeMenu.js';
 import DateMenu from '../DateMenu/DateMenu.js';
 import PrayerCard from '../PrayerCard/PrayerCard';
 import { formatDate, getRandomElement } from '../../utils.js'
-
-// import { getPrayers } from '../../apiCall';
 
 function App() {
   const [dailyPrayer, setDailyPrayer] = useState("");
@@ -33,11 +30,6 @@ function App() {
   useEffect(() => {
     getDailyPrayer("today");
   }, []) 
-
-  // if (isPacked) {
-  //   return <li className="item">{name} ✔</li>;
-  // }
-  // return <li className="item">{name}</li>;
 
   const getThemePrayer = (selection) => {
     console.log("HEY", selection)
@@ -105,6 +97,7 @@ function App() {
           element={
             <PrayerPage 
               prayer={prayer} 
+              theme={theme}
             />
           }
         />
@@ -124,34 +117,4 @@ function App() {
 
 export default App;
 
-  // const dayPrayers = async () => {
-  //   try {
-  //     const dayData = await getDayPrayers(day);
-  //     setWeekDay(dayData);
-  //   } catch (error) {
-  //     console.error('ERROR:', error);
-  //   }
-  // }
-
-  // const getDayPrayers = (day) => {
-  //   fetch(`https://the-rosary-api.vercel.app/v1/${day}`)
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     console.log(data)
-  //     setPrayer(data[0].text);
-  //   })
-  //   .catch(err => console.error(err));
-  // }
-
-/* <img src={logo} className="App-logo" alt="logo" />
-<p>
-  Edit <code>src/App.js</code> and save to reload.
-</p>
-<a
-  className="App-link"
-  href="https://reactjs.org"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Learn React
-</a> */
+  

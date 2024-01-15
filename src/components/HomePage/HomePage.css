@@ -1,0 +1,68 @@
+.home-page {
+  display: flex;
+  flex-Direction: column;
+  align-Items: center;
+  justify-Content: center;
+  height: 100vh;
+  background-color: paleturquoise;
+}
+
+h1 {
+  display: block;
+  font-size: 4.5em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  font-family: cursive;
+}
+
+a:-webkit-any-link {
+  color: navy;
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: cursive;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+button {
+  appearance: auto;
+  font-style: ;
+  font-variant-ligatures: ;
+  font-variant-caps: ;
+  font-variant-numeric: ;
+  font-variant-east-asian: ;
+  font-variant-alternates: ;
+  font-variant-position: ;
+  font-weight: bold;
+  font-stretch: ;
+  font-size: .75em;
+  font-family: cursive;
+  font-optical-sizing: ;
+  font-kerning: ;
+  font-feature-settings: ;
+  font-variation-settings: ;
+  text-rendering: auto;
+  color: buttontext;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  align-items: flex-start;
+  cursor: default;
+  box-sizing: border-box;
+  background-color: buttonface;
+  margin: 0em;
+  padding-block: 1px;
+  padding-inline: 6px;
+  border-width: 2px;
+  border-style: outset;
+  border-color: buttonborder;
+  border-image: initial;
+}
