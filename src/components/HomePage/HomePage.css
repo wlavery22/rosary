@@ -29,23 +29,11 @@ a:-webkit-any-link {
 
 button {
   appearance: auto;
-  font-style: ;
-  font-variant-ligatures: ;
-  font-variant-caps: ;
-  font-variant-numeric: ;
-  font-variant-east-asian: ;
-  font-variant-alternates: ;
-  font-variant-position: ;
-  font-weight: bold;
-  font-stretch: ;
   font-size: .75em;
   font-family: cursive;
-  font-optical-sizing: ;
-  font-kerning: ;
-  font-feature-settings: ;
-  font-variation-settings: ;
+  font-weight: bold;
   text-rendering: auto;
-  color: buttontext;
+  color: black;
   letter-spacing: normal;
   word-spacing: normal;
   line-height: normal;
@@ -57,7 +45,7 @@ button {
   align-items: flex-start;
   cursor: default;
   box-sizing: border-box;
-  background-color: buttonface;
+  background-color: papayawhip;
   margin: 0em;
   padding-block: 1px;
   padding-inline: 6px;
@@ -65,4 +53,10 @@ button {
   border-style: outset;
   border-color: buttonborder;
   border-image: initial;
+  transition: background-color 0.3s ease;
 }
+
+button:hover {
+  background-color: papayawhip; 
+  color: black;
+ }
