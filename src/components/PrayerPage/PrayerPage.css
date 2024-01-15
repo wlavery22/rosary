@@ -1,0 +1,42 @@
+.prayer-page {
+  display: flex;
+  flex-Direction: column;
+  align-Items: center;
+  justify-Content: center;
+  height: 100vh;
+  background-color: paleturquoise;
+}
+
+button {
+  appearance: auto;
+  font-size: 1.25em;
+  font-family: cursive;
+  font-weight: bold;
+  text-rendering: auto;
+  color: black;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  align-items: flex-start;
+  cursor: default;
+  box-sizing: border-box;
+  background-color: papayawhip;
+  margin: 0em;
+  padding-block: 1px;
+  padding-inline: 6px;
+  border-width: 2px;
+  border-style: outset;
+  border-color: buttonborder;
+  border-image: initial;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: papayawhip; 
+  color: black;
+ }

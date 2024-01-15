@@ -9,7 +9,7 @@ return (
     <h1 className="title">Welcome to Daily Prayer App</h1>
     <PrayerCard prayer={dailyPrayer} />
     <Link to="/select">
-      <br></br>
+      {/* <br></br> */}
       <br></br>
       <button className="select-prayer">Select Prayer</button>
     </Link>
