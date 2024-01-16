@@ -101,7 +101,7 @@ function App() {
             />
           }
         />
-        {/* <Route path="/*" element={<ErrorPage />} /> */}
+        <Route path="/*" element={<ErrorPage />} />
                 {/* <Route
           path="/prayercard"
           element={
