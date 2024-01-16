@@ -1,12 +1,12 @@
 import './PrayerCard.css';
 import { useState, useEffect } from 'react';
 
-function PrayerCard({prayer}) {
+function PrayerCard({prayer, theme}) {
 
   return (
     <main className="prayer-card">
-      {/* <p className="prayer">Give us this day our daily bread</p> */}
-      <p className="prayer">{prayer}</p>
+      {theme ? <p className="prayer">{prayer}</p> : 
+      <a href={prayer} target="_blank" rel="noopener noreferrer">Click here to pray</a>}
     </main>
     )
   }

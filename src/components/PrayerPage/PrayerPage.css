@@ -1,0 +1,20 @@
+.prayer-page {
+  display: flex;
+  flex-Direction: column;
+  align-Items: center;
+  justify-Content: center;
+  height: 100vh;
+  background-color: paleturquoise;
+}
+
+.home-btn {
+  font-size: 30px;
+  font-family: cursive;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: papayawhip; 
+  color: black;
+ }

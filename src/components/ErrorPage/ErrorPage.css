@@ -1,0 +1,29 @@
+.error-page-container {
+  display: flex;
+  flex-Direction: column;
+  align-Items: center;
+  justify-Content: center;
+  height: 100vh;
+  background-color: antiquewhite;
+  font-family: cursive;
+  font-weight: bold;
+}
+
+.error-message {
+  font-size: 50px;
+  font-family: cursive;
+  font-weight: bold;
+  text-align: center;
+}
+
+.return-to-home-btn {
+  font-size: 30px;
+  font-family: cursive;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: papayawhip; 
+  color: black;
+ }

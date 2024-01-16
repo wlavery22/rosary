@@ -1,0 +1,40 @@
+.home-page {
+  display: flex;
+  flex-Direction: column;
+  align-Items: center;
+  justify-Content: center;
+  height: 100vh;
+  background-color: paleturquoise;
+}
+
+h1 {
+  display: block;
+  font-size: 4.5em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  font-family: cursive;
+}
+
+a:-webkit-any-link {
+  color: navy;
+  /* cursor: pointer; */
+  text-decoration: underline;
+  font-family: cursive;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.select-prayer {
+  font-size: 30px;
+  font-family: cursive;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: papayawhip; 
+  color: black;
+ }
