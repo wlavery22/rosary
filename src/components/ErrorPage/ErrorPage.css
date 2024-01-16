@@ -11,10 +11,6 @@
 
 .error-message {
   font-size: 50px;
-  /* color: $ivory; */
-  /* border-radius: 20px; */
-  /* width: 50%; */
-  /* height: 9.6875em; */
   font-family: cursive;
   font-weight: bold;
   text-align: center;
@@ -26,7 +22,6 @@
   font-weight: bold;
   cursor: pointer;
 }
-
 
 button:hover {
   background-color: papayawhip; 
